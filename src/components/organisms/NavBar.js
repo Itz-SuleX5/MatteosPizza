@@ -19,7 +19,13 @@ const NavBar = () => (
     </div>
 
     <div className="flex justify-end items-center gap-4">
+      <div className="relative">
         <ShoppingCartIcon/>
+        <div className="bg-red-500 absolute bottom-4 left-3 z-10 w-4 h-4 absolute rounded-xl">
+          <h5 className="items-center justify-center flex text-xs">1</h5>
+        </div>
+      </div>
+        
         <Button>Iniciar sesion</Button>
     </div>
 
