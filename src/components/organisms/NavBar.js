@@ -1,6 +1,7 @@
 import React from "react";
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Button from "../atoms/Button";
 
 const NavBar = () => (
   <nav className="w-full bg-gray-900  text-white p-4 grid grid-cols-3 items-center flex">
@@ -19,8 +20,9 @@ const NavBar = () => (
       </ul>
     </div>
 
-    <div className="flex justify-end">
+    <div className="flex justify-end items-center gap-4">
         <ShoppingCartIcon/>
+        <Button>Iniciar sesion</Button>
     </div>
 
     

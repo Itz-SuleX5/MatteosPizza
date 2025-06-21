@@ -29,6 +29,7 @@
     "@fortawesome/react-fontawesome": "^0.2",
     "@mui/icons-material": "^7.1.2",
     "@mui/material": "^7.1.2",
+    "clx": "^1.0.0",
     "cors": "^2.8",
     "express": "^4.18",
     "express-oauth2-jwt-bearer": "^1.6.0",
@@ -42,6 +43,7 @@
     "react-router-dom": "^6.30.1",
     "react-scripts": "^5.0",
     "react-spinners": "^0.17.0",
+    "tailwind-merge": "^3.3.1",
     "typescript": "^4.9",
     "zustand": "^5.0.5"
   },

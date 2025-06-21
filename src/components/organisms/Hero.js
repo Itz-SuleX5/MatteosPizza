@@ -1,5 +1,6 @@
 import React from "react";
-import heroImg from "../assets/hero.svg";
+import heroImg from "../../assets/hero.svg";
+import Button from "../atoms/Button"
 
 const Hero = () => (
   <section className="relative flex items-center justify-center bg-gray-100 mt-0 ms-0">
@@ -8,7 +9,7 @@ const Hero = () => (
   <div className="absolute z-10 flex flex-col items-center">
     <h1 className="text-white text-7xl">Ordena ahora</h1>
     <h4 className="text-white text-2xl my-4">Pizzas artesanales a domicilio en menos de 30 minutos</h4>
-    <button className="text-white bg-red-500 px-4 py-2 rounded-md">Ver menu</button>
+    <Button>Ver menu</Button>
   </div>
   </section>
 );

@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Loading from "./components/Loading";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import Loading from "./components/organisms/Loading";
+import NavBar from "./components/organisms/NavBar";
+import Footer from "./components/organisms/Footer";
 import Home from "./views/Home";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
