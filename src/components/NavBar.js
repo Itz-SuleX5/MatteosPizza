@@ -1,0 +1,30 @@
+import React from "react";
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+const NavBar = () => (
+  <nav className="w-full bg-gray-900  text-white p-4 grid grid-cols-3 items-center flex">
+    <div className="flex items-center">
+      <div className="bg-red-500 rounded-full w-10 h-10 flex items-center justify-center">
+        <LocalPizzaIcon />
+      </div>
+      
+      <h1 className="ms-5">Matteo's Pizza</h1>
+    </div>
+
+    <div className="flex-1 flex justify-center">
+      <ul className="flex gap-4">
+        <li>Inicio</li>
+        <li>Menu</li>
+      </ul>
+    </div>
+
+    <div className="flex justify-end">
+        <ShoppingCartIcon/>
+    </div>
+
+    
+  </nav>
+);
+
+export default NavBar;
