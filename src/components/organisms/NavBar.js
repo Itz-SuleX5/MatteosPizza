@@ -1,14 +1,12 @@
 import React from "react";
-import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Button from "../atoms/Button";
+import Logo from "../atoms/Logo"
 
 const NavBar = () => (
   <nav className="w-full bg-gray-900  text-white p-4 grid grid-cols-3 items-center flex">
     <div className="flex items-center">
-      <div className="bg-red-500 rounded-full w-10 h-10 flex items-center justify-center">
-        <LocalPizzaIcon />
-      </div>
+      <Logo/>
       
       <h1 className="ms-5">Matteo's Pizza</h1>
     </div>
