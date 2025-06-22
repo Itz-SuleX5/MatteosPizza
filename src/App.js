@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/organisms/Loading";
 import NavBar from "./components/organisms/NavBar";
 import Footer from "./components/organisms/Footer";
+import Profile from "./components/organisms/Profile";
 import Home from "./views/Home";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
@@ -22,6 +23,7 @@ const App = () => {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/perfil" element={<Profile/>}/>
           </Routes>
         </main>
         <Footer />

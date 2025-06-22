@@ -34,7 +34,7 @@ const products = [
 ];
 
 const Content = () => (
-  <div className="p-8">
+  <div id="menu" className="p-8">
     <h1 className="text-3xl text-center">Nuestro menu</h1>
     <h3 className="text-center mt-3">Selecciona tus pizzas favoritas preparadas con ingredientes frescos</h3>
 
