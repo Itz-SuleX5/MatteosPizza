@@ -4,6 +4,8 @@ import Loading from "./components/organisms/Loading";
 import NavBar from "./components/organisms/NavBar";
 import Footer from "./components/organisms/Footer";
 import Profile from "./components/organisms/Profile";
+import Cart from "./components/organisms/Cart";
+import Checkout from "./components/organisms/Checkout";
 import Home from "./views/Home";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
@@ -24,6 +26,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/perfil" element={<Profile/>}/>
+            <Route path="/carrito" element={<Cart/>}/>
+            <Route path="/pago" element={<Checkout/>}/>
           </Routes>
         </main>
         <Footer />

@@ -15,6 +15,7 @@ const Profile = () => (
         <PersonalInformationCard
         title={"Personal"}
         button={"Guardar Cambios"}
+        signOut={true}
         />
     </div>
 );

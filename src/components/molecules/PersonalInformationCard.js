@@ -3,7 +3,7 @@ import Button from "../atoms/Button";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutIcon from '@mui/icons-material/Logout'
 
-const PersonalInformationCard = ({title, button}) => {
+const PersonalInformationCard = ({title, button, signOut}) => {
     
     const { logout, user } = useAuth0();
 
@@ -33,9 +33,12 @@ const PersonalInformationCard = ({title, button}) => {
         <h3 className="mt-2">Direccion</h3>
         <input type="text" className="border border-gray-400 w-full rounded my-2 py-1 indent-2"/>
 
-        <div className="flex justify-between py-4">
-            <Button className="bg-red-200 text-red-700 justify-center flex gap-1 hover:bg-red-300" onClick={() => logout()}><LogoutIcon/>Cerrar sesion</Button>
-            <Button>{button}</Button>
+        <div className="flex py-4">
+            {signOut && (
+                <Button className="bg-red-200 text-red-700 justify-center flex gap-1 hover:bg-red-300" onClick={() => logout()}><LogoutIcon/>Cerrar sesion</Button>
+            )}
+            
+            <Button className="ml-auto">{button}</Button>
         </div>
         
 

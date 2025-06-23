@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/Footer.css";
 import Logo from "../atoms/Logo"
+import { HashLink } from "react-router-hash-link/dist/react-router-hash-link.cjs.production";
 
 
 const Footer = () => (
@@ -16,8 +17,8 @@ const Footer = () => (
     <div className="text-white flex flex-col items-start gap-2">
       <h1>Enlaces</h1>
       <ul className="text-gray-400">
-        <li>Inicio</li>
-        <li>Menu</li>
+        <li><HashLink smooth to="/#inicio" className="!no-underline">Inicio</HashLink></li>
+        <li><HashLink smooth to="/#menu" className="!no-underline">Menu</HashLink></li>
         <li>Sobre nosotros</li>
         <li>Contacto</li>
       </ul>
