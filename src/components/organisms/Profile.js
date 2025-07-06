@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState }from "react";
 import PersonalInformationCard from "../molecules/PersonalInformationCard";
+import useInfo from "../../hooks/useInfo"
 
-const Profile = () => (
-    <div className="flex flex-col items-center w-3/5 mx-auto mt-4 gap-4">
+const Profile = () => {
+
+    const [telefono, setTelefono] = useState('');
+    const [direccion, setDireccion] = useState('');
+
+    return (
+<div className="flex flex-col items-center w-3/5 mx-auto mt-4 gap-4">
         <h1 className="text-3xl">Mi perfil</h1>
         <div className="bg-gray-200 w-full h-10 p-1 rounded flex gap-2">
             <div className="bg-white w-1/2 h-full flex justify-center items-center rounded cursor-pointer">
@@ -15,9 +21,17 @@ const Profile = () => (
         <PersonalInformationCard
         title={"Personal"}
         button={"Guardar Cambios"}
+        telefono={telefono}
+        setTelefono={setTelefono}
+        direccion={direccion}
+        setDireccion={setDireccion}
         signOut={true}
         />
     </div>
-);
+    );
+
+
+
+};
 
 export default Profile;
