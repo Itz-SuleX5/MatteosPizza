@@ -2,33 +2,49 @@ import React from "react";
 import Button from "../atoms/Button";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MoneyIcon from '@mui/icons-material/Money';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import HouseIcon from '@mui/icons-material/House';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { HashLink } from "react-router-hash-link";
 
-const OrderConfirmation = () => (
+const OrderConfirmation = ({data, metodo_pago}) => {
+    if (!data || !data.order){
+        return <p className="text-gray-500">⏳ Procesando pedido...</p>;
+    } 
+    //console.log("data recibida");
+    //console.log(data);
+
+     return (
+
     <div className="flex flex-col mx-auto w-full items-center gap-2">
         <CheckCircleIcon style={{ fontSize: 80, color: "#22C55E"}}/>
         <h1 className="text-2xl font-medium">¡Pedido Confirmado!</h1>
         <h2 className="text-gray-500">Tu pedido ha sido procesado correctamente</h2>
-        <h2 className="mt-2">Pedido #12345</h2>
+        <h2 className="mt-2">Pedido #{data?.order.id}</h2>
 
         <div className="flex flex-col w-full border border-gray-400 p-3 rounded">
             <div className="gap-1 border-b border-gray-300 flex flex-col pb-2">
                <h1 className="font-medium">Detalles del pedido</h1>
             <h2 className="text-gray-400 font-medium my-2">Productos</h2>
-            <div className="flex justify-between">
-                <h2>Producto 1</h2>
-                <h2>$29.99</h2>
-            </div>
-            <div className="flex justify-between">
-                <h2>Producto 2</h2>
-                <h2>$19.99</h2>
-            </div> 
+            {data?.order.items.map((item, index) => (
+                <div className="flex justify-between" key={item.id || `${item.product.nombre}-${index}`}>
+                    <div className="flex gap-4">
+                        <h2>{item.product.nombre}</h2>
+                        <h3>{item.cantidad} x ${item.precio_unitario}</h3>
+                    </div>
+                    <div>
+                        <h2>${item.subtotal}</h2>
+                    </div>
+                    
+                </div>
+            ))}
+            
+            
             <div className="flex justify-between">
                 <h2 className="font-bold">Total</h2>
                 <div className="bg-green-500 px-2 py-1 rounded-full">
-                    <h2 className="text-white">$19.99</h2>
+                    <h2 className="text-white">${data?.order.total}</h2>
                 </div>
                 
             </div> 
@@ -37,14 +53,14 @@ const OrderConfirmation = () => (
             <div className="gap-1 border-b border-gray-300 flex flex-col pb-2">
             <h2 className="text-gray-400 font-medium my-2">Direccion de entrega</h2>
             <div>
-                <h2>Calle principal</h2>
+                <h2>{data?.order.user_info.direccion}</h2>
             </div> 
             </div>
 
             <div className="gap-1 flex flex-col">
             <h2 className="text-gray-400 font-medium my-2">Metodo de pago</h2>
             <div className="flex items-center gap-2">
-                <MoneyIcon/> <h2>efectivo</h2>
+                {metodo_pago === "Efectivo" ? <MoneyIcon/> :  metodo_pago === "Tarjeta de Credito" ? <CreditCardOutlinedIcon/> : metodo_pago === "Bitcoin" ? <CurrencyBitcoinIcon/> : null} <h2>{metodo_pago}</h2>
             </div> 
             </div>
             
@@ -62,5 +78,6 @@ const OrderConfirmation = () => (
         </Button>
     </div>
 );
+};
 
 export default OrderConfirmation;

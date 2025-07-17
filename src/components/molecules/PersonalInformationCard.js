@@ -7,24 +7,24 @@ import { useInfo } from '../../hooks/useInfo'
 const PersonalInformationCard = ({title, button, signOut, telefono, setTelefono, direccion, setDireccion, buttonDisabled, onClick}) => {
          
     const { logout, user } = useAuth0();
-    const { userProfile, loading, error, updateUserProfile } = useInfo();
+    const { userProfile, loading, updateUserProfile } = useInfo();
     
     useEffect(() => {
         if (userProfile && !loading) {
-            setTelefono(userProfile.phone || '');
-            setDireccion(userProfile.address || '');
+            setTelefono(userProfile.telefono || '');
+            setDireccion(userProfile.direccion || '');
         }
     }, [userProfile, loading, setTelefono, setDireccion]);
     
     const handleSave = async () => {
         try{
             const data = {
-                address: direccion, 
-                phone: telefono
+                direccion: direccion, 
+                telefono: telefono
             };
             
             const result = await updateUserProfile(data);
-            console.log('Datos guardados correctamente', result);
+            //console.log('Datos guardados correctamente', result);
             
             if (onClick){
                 onClick();

@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 export const useInfo = () => {
   const { getAccessTokenSilently, user } = useAuth0();
   const [userProfile, setUserProfile] = useState({
-    address: '',
-    phone: '',
+    direccion: '',
+    telefono: '',
     auth0_id: ''
   });
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ export const useInfo = () => {
       
       const token = await getAccessTokenSilently();
       
-      const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+      const response = await fetch(`http://127.0.0.1:8000/api/users/profile/${user.sub}/`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -31,10 +31,11 @@ export const useInfo = () => {
       }
 
       const data = await response.json();
+      //console.log(data)
       
       setUserProfile({
-        address: data.address || '',
-        phone: data.phone || '',
+        direccion: data.direccion || '',
+        telefono: data.telefono || '',
         auth0_id: data.auth0_id || user?.sub || ''
       });
       
@@ -51,12 +52,13 @@ export const useInfo = () => {
       const token = await getAccessTokenSilently();
       
       const requestData = {
-        address: data.address,
-        phone: data.phone,
+        nombre: `${user.name}`,
+        direccion: data.direccion,
+        telefono: data.telefono,
         auth0_id: user?.sub
       };
       
-      const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+      const response = await fetch(`http://127.0.0.1:8000/api/users/profile/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -88,6 +90,7 @@ export const useInfo = () => {
   useEffect(() => {
     if (user) {
       fetchUserProfile();
+      //console.log(user.sub)
     }
   }, [user]);
 

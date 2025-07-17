@@ -2,12 +2,20 @@ import { React, useState } from "react";
 import PersonalInformationCard from "../molecules/PersonalInformationCard";
 import PaymentMethod from "../molecules/PaymentMethod";
 import OrderConfirmation from "../molecules/OrderConfirmation";
+import { useConfirmOrder } from "../../hooks/useConfirmOrder";
+import useCart from "../../store/useCart"
 
 const Checkout = () => {
 
     const [telefono, setTelefono] = useState("");
     const [direccion, setDireccion] = useState("");
+    const [metodo_pago, setMetodo_pago] = useState("Efectivo");
     const [step, setStep] = useState(1);
+    const cartItems = useCart(state => state.items);
+    const cleanCart = useCart(state => state.cleanCart);
+    //console.log(cartItems);
+    //console.log(`Metodo de pagoo ${metodo_pago}`)
+    const {confirmOrder, orderData} = useConfirmOrder();
 
     const isInformationValid = telefono.trim()!== "" && direccion.trim()!== "";
     const handleContinue = () => {
@@ -15,6 +23,15 @@ const Checkout = () => {
     };
     const handleBack = () => {
         setStep(prev => prev -1);
+    }
+
+    const handleContinueAndConfirmPayment = async () => {
+        //console.log("proceso iniciado");
+        await confirmOrder(cartItems, metodo_pago);
+        //console.log("fetch hecho");
+        setStep(prev => prev +1);
+        //console.log("confirmacion");
+        
     }
     return (
 
@@ -50,12 +67,17 @@ const Checkout = () => {
         <PaymentMethod
         step={step}
         onClickBack={handleBack}
-        onClickContinue={handleContinue}
+        onClickContinue={handleContinueAndConfirmPayment}
+        metodo_pago={metodo_pago}
+        setMetodo_pago={setMetodo_pago}
         />
       )}  
 
       {step === 3 && (
-        <OrderConfirmation/>
+        <OrderConfirmation
+        data={orderData}
+        metodo_pago={metodo_pago}
+        />
       )}
       
 

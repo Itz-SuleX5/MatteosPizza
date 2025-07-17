@@ -7,10 +7,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Tooltip from '@mui/material/Tooltip';
 import Button from "../atoms/Button";
 import Logo from "../atoms/Logo"
-import { cartItems } from "./Cart"
+import useCart from "../../store/useCart";
 
 const NavBar = () => {
   const { loginWithRedirect, user } = useAuth0();
+  const cartItems = useCart((state) => state.items);
   return (
   <nav className="w-full bg-gray-900  text-white p-4 grid grid-cols-3 items-center flex" id="inicio">
     <div className="flex items-center">

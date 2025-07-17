@@ -6,8 +6,8 @@ import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import Radio from '@mui/material/Radio';
 import { red } from '@mui/material/colors';
 
-const PaymentMethod = ({step, onClickBack, onClickContinue}) => {
-    const [selected, setSelected] = useState("efectivo");
+const PaymentMethod = ({step, onClickBack, onClickContinue, metodo_pago, setMetodo_pago}) => {
+
 
     return (
     <div className='flex flex-col mx-auto w-full gap-2'>
@@ -16,8 +16,8 @@ const PaymentMethod = ({step, onClickBack, onClickContinue}) => {
             <MoneyIcon/>
             <h2>Efectivo</h2>
             <Radio className='ml-auto' name='payment-method'
-            checked={selected === 'efectivo'}
-                    onChange={() => setSelected('efectivo')}
+            checked={metodo_pago === 'Efectivo'}
+                    onChange={() => setMetodo_pago('Efectivo')}
                 sx={{
                     color: '#bdbdbd',
                     '&.Mui-checked': {
@@ -29,8 +29,8 @@ const PaymentMethod = ({step, onClickBack, onClickContinue}) => {
         <div className='flex items-center border border-gray-400 w-full px-3 py-1 rounded gap-2 justify-center m-auto items-center'>
             <CreditCardOutlinedIcon/>
             <h2>Tarjeta de Credito</h2>
-            <Radio className='ml-auto' name='payment-method' checked={selected === 'tarjeta'}
-                    onChange={() => setSelected('tarjeta')}
+            <Radio className='ml-auto' name='payment-method' checked={metodo_pago === 'Tarjeta de Credito'}
+                    onChange={() => setMetodo_pago('Tarjeta de Credito')}
                 sx={{
                     color: '#bdbdbd',
                     '&.Mui-checked': {
@@ -43,8 +43,8 @@ const PaymentMethod = ({step, onClickBack, onClickContinue}) => {
         <div className='flex items-center border border-gray-400 w-full px-3 py-1 rounded gap-2 justify-center m-auto items-center'>
             <CurrencyBitcoinIcon/>
             <h2>Bitcoin</h2>
-            <Radio className='ml-auto' name='payment-method' checked={selected === 'bitcoin'}
-                    onChange={() => setSelected('bitcoin')}
+            <Radio className='ml-auto' name='payment-method' checked={metodo_pago === 'Bitcoin'}
+                    onChange={() => setMetodo_pago('Bitcoin')}
                 sx={{
                     color: '#bdbdbd',
                     '&.Mui-checked': {

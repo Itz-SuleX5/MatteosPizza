@@ -1,8 +1,9 @@
 import React from "react";
 import Card from "../molecules/Card"
 import pizzaImage from "../../assets/pizza.svg"
+import usePizza  from "../../hooks/usePizzas"
 
-const products = [
+const productsTest = [
   {
     id: 1,
     name: "Margherita Clasica",
@@ -33,22 +34,31 @@ const products = [
   },
 ];
 
-const Content = () => (
-  <div id="menu" className="p-8">
+
+
+const Content = () => {
+  const { pizzas } = usePizza();
+
+  return (
+    <div id="menu" className="p-8">
     <h1 className="text-3xl text-center">Nuestro menu</h1>
     <h3 className="text-center mt-3">Selecciona tus pizzas favoritas preparadas con ingredientes frescos</h3>
 
 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
-  {products.map((product) => (
+  {pizzas.map((pizza) => (
     <Card
-      image={product.image}
-      name={product.name}
-      description={product.description}
-      price={product.price}
+      key={pizza.id}
+      id={pizza.id}
+      image={pizza.image_url}
+      name={pizza.name}
+      description={pizza.description}
+      ingredients={pizza.ingredients}
+      price={pizza.price}
     />
   ))}
     </div>
   </div>
-);
+  )
+};
 
 export default Content;
