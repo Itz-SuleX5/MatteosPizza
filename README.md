@@ -7,7 +7,7 @@ Create an e-commerce platform for a pizza store with:
 *   **Backend** in Django + Django REST Framework ✅
 *   **Frontend** in React, using a bundler 🕐
 *   **Styles** with Tailwind CSS ✅
-*   **State Management** with Zustand 🕐
+*   **State Management** with Zustand ✅
 *   **Animations** with Framer Motion 🕐
 *   **Authentication** with Auth0 ✅
 *   **Testing**: Pytest (backend) ✅ and Jest + React Testing Library (frontend) ✅
@@ -25,7 +25,7 @@ Create an e-commerce platform for a pizza store with:
 | --------------- | -------------------------------------------------------------- | ------ |
 | Backend         | Django, Django REST Framework, PostgreSQL (Neon)               | ✅     |
 | Authentication  | Auth0                                                          | ✅     |
-| Frontend        | React ✅, Bundler 🕐, Tailwind CSS ✅, Zustand 🕐             |        |
+| Frontend        | React ✅, Bundler 🕐, Tailwind CSS ✅, Zustand ✅             |        |
 | Animations      | Framer Motion                                                  | 🕐     |
 | Testing         | Pytest (backend), Jest + React Testing Library (frontend)      | ✅     |
 | Containerization| Docker, Docker Compose                                         | ✅     |
@@ -40,7 +40,7 @@ Create an e-commerce platform for a pizza store with:
 
 1.  **Authentication and Users**
     *   Registration and login with Auth0 ✅
-    *   Roles: Admin (store), Customer 🕐
+    *   Roles: Admin (store), Customer ✅
     *   Customer profile with address and contact details ✅
 
 2.  **Products (Pizzas and Complements)**
@@ -55,12 +55,12 @@ Create an e-commerce platform for a pizza store with:
 
 4.  **Orders**
     *   Checkout: order creation with order lines, address, and payment method ✅
-    *   Order statuses: `pending`, `confirmed`, `in_preparation`, `shipped`, `delivered`, `canceled` 🕐
+    *   Order statuses: `pending`, `confirmed`, `in_preparation`, `shipped`, `delivered`, `canceled` ✅
     *   WebSockets for real-time updates (optional) 🕐
 
 5.  **Admin Panel**
-    *   Product and order dashboard 🕐
-    *   Order status management with action buttons 🕐
+    *   Product and order dashboard ✅
+    *   Order status management with action buttons ✅
     *   Statistics: total sales, orders by status 🕐
 
 6.  **Notifications**
