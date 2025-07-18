@@ -7,7 +7,7 @@ export const HandleNextStage = async (orderToUpdate, states, orders, setOrder, s
       const nextState = states[currentStateIndex + 1];
 
       const token = await getAccessTokenSilently();
-      const response = await fetch(`http://127.0.0.1:8000/api/orders/api/${orderToUpdate.id}/update-status/`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/orders/api/${orderToUpdate.id}/update-status/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -10,7 +10,7 @@ export const useGetMyOrders = () => {
     const getMyOrders = async () => {
         const token = await getAccessTokenSilently()
 
-        const response = await fetch('http://127.0.0.1:8000/api/orders/api/my-orders/',  {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/orders/api/my-orders/`,  {
             'method':"GET",
             'headers': {
                 'Authorization': `Bearer ${token}`,

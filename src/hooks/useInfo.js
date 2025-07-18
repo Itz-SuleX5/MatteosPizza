@@ -18,7 +18,7 @@ export const useInfo = () => {
       
       const token = await getAccessTokenSilently();
       
-      const response = await fetch(`http://127.0.0.1:8000/api/users/profile/${user.sub}/`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile/${user.sub}/`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -59,7 +59,7 @@ export const useInfo = () => {
         auth0_id: user?.sub
       };
       
-      const response = await fetch(`http://127.0.0.1:8000/api/users/profile/`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,

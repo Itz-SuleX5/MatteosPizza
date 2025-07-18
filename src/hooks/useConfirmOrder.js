@@ -9,7 +9,7 @@ export const useConfirmOrder = () => {
 
     const confirmOrder = async (cartItems, metodo_pago) => {
     const token = await getAccessTokenSilently()
-    const response = await fetch("http://127.0.0.1:8000/api/orders/api/create/", {
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/orders/api/create/`, {
         method: "POST",
         headers: {
             "Authorization" : `Bearer ${token}`,

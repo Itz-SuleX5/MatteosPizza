@@ -15,7 +15,7 @@ const useOrders = () => {
         
             
         
-        const response = await fetch ('http://127.0.0.1:8000/api/orders/api/', {
+        const response = await fetch (`${process.env.REACT_APP_API_BASE_URL}/api/orders/api/`, {
             method: "GET",
             headers: {
                 'Authorization' : `Bearer ${token}`,
