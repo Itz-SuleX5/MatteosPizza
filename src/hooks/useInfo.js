@@ -32,6 +32,7 @@ export const useInfo = () => {
 
       const data = await response.json();
       //console.log(data)
+      console.log(token)
       
       setUserProfile({
         direccion: data.direccion || '',
