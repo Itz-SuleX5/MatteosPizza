@@ -40,11 +40,11 @@ export const OrderHistory = () => {
                                 <div className="bg-gray-50 flex flex-col">
                                     {order.items.map((item) => (
                                         <div key={item.id} className="flex justify-between px-4 pt-2 pb-1">
-                                            <div className="flex gap-2">
+                                            <div className="flex gap-2 w-10/12">
                                                 <img src={item.product.imagen_url} alt="" className="object-scale-down w-20"/>
                                                 <div>
                                                     <h1>{item.product.nombre}</h1>
-                                                    <h2 className="text-gray-400">Ingredientes: {item.product.ingredientes.join(",")}</h2>
+                                                    <h2 className="text-gray-400">Ingredientes: {item.product.ingredientes.join(", ")}</h2>
                                                 </div>
                                             </div>
                                             <div>
