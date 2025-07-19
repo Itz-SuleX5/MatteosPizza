@@ -44,7 +44,7 @@ export const OrderHistory = () => {
                                                 <img src={item.product.imagen_url} alt="" className="object-scale-down w-20"/>
                                                 <div>
                                                     <h1>{item.product.nombre}</h1>
-                                                    <h2 className="text-gray-400">Ingredientes: {item.product.ingredientes}</h2>
+                                                    <h2 className="text-gray-400">Ingredientes: {item.product.ingredientes},</h2>
                                                 </div>
                                             </div>
                                             <div>
