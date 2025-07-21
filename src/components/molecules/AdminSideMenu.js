@@ -10,7 +10,8 @@ const AdminSideMenu = () => {
     return(
         <div className="gap-2 flex flex-col">
             <h1 className="text-2xl font-medium mb-2">Dashboard</h1>
-            <ul className="gap-2 flex flex-col text-gray-400 [&>li]:flex [&>li]:gap-2 [&>li]:items-center border-b border-b-gray-300 pb-6 mb-3">
+            <div className="flex md:flex-col overflow-x-auto scrollbar-none">
+                <ul className="gap-2 flex md:flex-col text-gray-400 [&>li]:flex [&>li]:gap-2 [&>li]:items-center border-b border-b-gray-300 pb-6 mb-3">
                 <li>
                     <Inventory2Icon/>
                     Productos
@@ -37,6 +38,8 @@ const AdminSideMenu = () => {
             <LogoutIcon/>
             Cerrar sesion
         </div>
+            </div>
+            
             
             
         </div>

@@ -29,7 +29,7 @@ const Cart = () => {
     return (
         <div className='flex flex-col items-center mx-auto my-4 gap-4'>
         <h1 className='text-3xl font-bold'>Carrito de compras</h1>
-        <div className='w-2/5 border-x-2 border-y-2 border-gray-2'>
+        <div className='w-5/5 md:w-2/5 border-x-2 border-y-2 border-gray-2'>
             <div className='justify-between flex border-b-2 border-gray-2 p-4 mb-2'>
                 <h1 className='font-bold'>Mi carrito</h1>
                 <CloseIcon/>
