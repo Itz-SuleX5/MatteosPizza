@@ -118,12 +118,14 @@ const Orders = () => {
                     </div>
                     
                   </div>
+                    </div>
+                  )})}
 
                   <div className="gap-1 flex flex-col">
                     <h1 className="font-medium">Resumen</h1>
                     <div className="flex justify-between">
                       <h2>Subtotal</h2>
-                      <h2>${i.subtotal}</h2>
+                      <h2>${o.total}</h2>
                     </div>
                     <div className="flex justify-between border-b-2 border-gray-100">
                       <h2>Costo de envio</h2>
@@ -131,7 +133,7 @@ const Orders = () => {
                     </div>
                     <div className="flex justify-between">
                       <h1 className="font-medium">Total</h1>
-                      <h1 className="text-green-600 font-medium">${(parseFloat(i.subtotal)+2.99).toFixed(2)}</h1>
+                      <h1 className="text-green-600 font-medium">${(parseFloat(o.total)+2.99).toFixed(2)}</h1>
                     </div>
                     <h1 className="font-medium">Metodo de pago</h1>
                     <div className="w-full rounded-md bg-gray-50 mx-auto p-1 flex items-center gap-2">
@@ -155,9 +157,9 @@ const Orders = () => {
                       
                     </div>
                   </div>
-                  </div>
+                
 
-          )})}
+          
                 
 
               </div>

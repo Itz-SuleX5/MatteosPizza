@@ -4,7 +4,7 @@ import Button from "../atoms/Button"
 import { isTemplateLiteral } from "typescript";
 
 const OrderDetails = ({order, onNextStage}) => (
-    <div className="border rounded-md border-gray-300">
+    <div className="border rounded-md border-gray-300 hidden md:block">
         <div className="w-4/5 mx-auto py-4">
             <div className="flex justify-between">
                 <h1># {order.id} - {order.cliente}</h1>
