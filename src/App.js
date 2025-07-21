@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/organisms/Loading";
 import NavBar from "./components/organisms/NavBar";
@@ -15,10 +15,16 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { isLoading, error } = useAuth0();
+  const { isLoading, error, isAuthenticated, loginWithRedirect } = useAuth0();
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated){
+      loginWithRedirect();
+    }
+  },[isLoading])
 
   if (error) return <div>Oops... {error.message}</div>;
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />;  
 
   return (
     <Router>

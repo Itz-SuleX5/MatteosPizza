@@ -26,7 +26,7 @@ function usePizza() {
             const data = await response.json();
 
             const parsedProducts = data.products.map(product => {
-                console.log(product.ingredientes)
+                //console.log(product.ingredientes)
                 return{
                     id: product.id,
                     name: product.nombre,
@@ -36,8 +36,8 @@ function usePizza() {
                     description: product.descripcion,
                 }
             })
-            console.log({token})
-            console.log({data})
+            //console.log({token})
+            //console.log({data})
             
             setPizza(parsedProducts);
         }

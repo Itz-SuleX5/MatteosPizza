@@ -1,13 +1,23 @@
 import React from "react";
 import Button from "../atoms/Button";
 import useCart from "../../store/useCart";
+import { useNavbar } from "../../store/useNavbar";
 
 const Card = ({ id, image, name, description, ingredients, price, onAdd, ...rest}) => {
-
+    const setNavbarProductAdded = useNavbar((state) => state.setNavbarProductAdded);
+    const setNavbarTriggerAnimation = useNavbar((state) => state.setNavbarTriggerAnimation);
     const addToCart = useCart((state) => state.addToCart);
 
     const handleAdd = () => {
-        console.log(id)
+        //console.log(id)
+        setNavbarProductAdded(true);
+        setTimeout(() => {
+            setNavbarProductAdded(false);
+            setNavbarTriggerAnimation(false);
+        }, 3000);
+        setTimeout(() => {
+            setNavbarTriggerAnimation(true);
+        }, 100);
         addToCart({
             id,
             image,

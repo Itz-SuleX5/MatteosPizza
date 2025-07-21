@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { motion } from "framer-motion";
 import { useAuth0 } from "@auth0/auth0-react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -8,12 +9,15 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from "../atoms/Button";
 import Logo from "../atoms/Logo"
 import useCart from "../../store/useCart";
+import { useNavbar } from "../../store/useNavbar";
 
 const NavBar = () => {
   const { loginWithRedirect, user } = useAuth0();
   const cartItems = useCart((state) => state.items);
+  const productAdded = useNavbar((state) => state.productAdded);
+  const triggerAnimation = useNavbar((state)=> state.triggerAnimation);
   return (
-  <nav className="w-full bg-gray-900  text-white p-4 grid grid-cols-3 items-center flex" id="inicio">
+  <nav className={`w-full bg-gray-900  text-white p-4 grid grid-cols-3 items-center flex ${productAdded ? 'fixed' : ''}`} id="inicio">
     <div className="flex items-center">
       <HashLink smooth to ="/#menu" className="!no-underline inline-flex items-center w-auto">
         <Logo/>
@@ -38,9 +42,9 @@ const NavBar = () => {
         <ShoppingCartIcon/>
         </Link>
         
-        <div className="bg-red-500 absolute bottom-4 left-3 z-10 w-4 h-4 absolute rounded-xl">
+        <motion.div animate={triggerAnimation ? { scale: [1, 1.3, 1] } : {} } transition={{duration: 0.6}}  className="bg-red-500 absolute bottom-4 left-3 z-10 w-4 h-4 absolute rounded-xl">
           <h5 className="items-center justify-center flex text-xs">{cartItems.length}</h5>
-        </div>
+        </motion.div>
       </div>
     {user && (
       <Link to="/perfil">

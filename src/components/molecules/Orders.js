@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from 'framer-motion'
 import Button from "../atoms/Button";
 import Pill from "../atoms/Pill";
 import MoneyIcon from '@mui/icons-material/Money';
@@ -86,7 +87,7 @@ const Orders = () => {
                   </div>
                   <div className="flex items-center m-2 gap-3">
                     <h1>{o.fecha}</h1>
-                    <button className="rounded-full w-8 h-8 bg-gray-100 flex items-center justify-center focus:outline-none" onClick={() => order ? setOrder("") : setOrder(o)}><KeyboardArrowDownIcon/></button>
+                    <motion.button animate={o.id === order.id ? {rotate: 180} : {rotate: 0}} transition={{duration: 0.3}} className={`rounded-full w-8 h-8  flex items-center justify-center focus:outline-none ${order.id === o.id ? "bg-red-500 text-white" : "bg-gray-100"}`} onClick={() => order ? setOrder("") : setOrder(o)}><KeyboardArrowDownIcon/></motion.button>
                   </div>
                 </div>
 
@@ -106,7 +107,7 @@ const Orders = () => {
                   <div>
                   <div className="flex justify-between">
                     <div className="flex">
-                      <img src={i.imagen_url} alt="" className="h-20 rounded-xl " />
+                      <img src={i.imagen_url} alt="" className="h-20 w-40 rounded-xl object-cover" />
                     <div>
                       <h1>{i.nombre}</h1>
                       <h2 className="text-gray-600">${i.precio_unitario} x {i.cantidad}</h2>

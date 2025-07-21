@@ -2,7 +2,7 @@
   "name": "auth0-react-sample",
   "version": "0.1.0",
   "private": true,
-  "engines":{
+  "engines": {
     "node": "20.x"
   },
   "scripts": {
@@ -36,6 +36,7 @@
     "cors": "^2.8",
     "express": "^4.18",
     "express-oauth2-jwt-bearer": "^1.6.0",
+    "framer-motion": "^12.23.6",
     "helmet": "^4.4",
     "highlight.js": "^10.0",
     "jwt-decode": "^4.0.0",
