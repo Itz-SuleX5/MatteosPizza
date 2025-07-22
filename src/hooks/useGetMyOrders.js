@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const useGetMyOrders = () => {
 
     const { getAccessTokenSilently } = useAuth0()
-    const [myOrders, setMyOrders] = useState(null);
     
 
     const getMyOrders = async () => {
@@ -18,8 +17,29 @@ export const useGetMyOrders = () => {
             },
         });
         const data = await response.json()
-        setMyOrders(data);
-    }
+        
+        return data
+    };
 
-    return {getMyOrders, myOrders}
+    const {
+        data: myOrders = null, 
+        isLoading,
+        error,
+        refetch
+    } = useQuery({
+        queryKey : ['myOrders'],
+        queryFn : getMyOrders,
+        staleTime: 5 * 60 * 1000,
+        cacheTime: 10 * 60 * 1000,
+        enabled: false,
+    });
+
+    return {
+        getMyOrders: refetch,
+        myOrders,
+        isLoading,
+        error,
+    };
+
+    
 }

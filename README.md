@@ -8,11 +8,11 @@ Create an e-commerce platform for a pizza store with:
 *   **Frontend** in React, using a bundler 🕐
 *   **Styles** with Tailwind CSS ✅
 *   **State Management** with Zustand ✅
-*   **Animations** with Framer Motion 🕐
+*   **Animations** with Framer Motion ✅
 *   **Authentication** with Auth0 ✅
 *   **Testing**: Pytest (backend) ✅ and Jest + React Testing Library (frontend) ✅
 *   **Containerization** with Docker and Docker Compose ✅
-*   **Deployment**: Railway for backend 🕐, Vercel for frontend 🕐, Neon as serverless PostgreSQL ✅
+*   **Deployment**: Render for backend , Vercel for frontend , Neon as serverless PostgreSQL ✅
 *   **CI/CD** with GitHub Actions 🕐
 *   **Best Practices**: ESLint 🕐, Prettier 🕐, Type Hints ✅, Black ✅, Flake8 ✅
 *   **Optionals**: WebSockets (Django Channels) 🕐, Celery + Redis 🕐, GraphQL 🕐
@@ -21,17 +21,17 @@ Create an e-commerce platform for a pizza store with:
 
 ### 1. Architecture and Technologies
 
-| Layer           | Technology / Tool                                              | Status |
-| --------------- | -------------------------------------------------------------- | ------ |
-| Backend         | Django, Django REST Framework, PostgreSQL (Neon)               | ✅     |
-| Authentication  | Auth0                                                          | ✅     |
-| Frontend        | React ✅, Bundler 🕐, Tailwind CSS ✅, Zustand ✅             |        |
-| Animations      | Framer Motion                                                  | 🕐     |
-| Testing         | Pytest (backend), Jest + React Testing Library (frontend)      | ✅     |
-| Containerization| Docker, Docker Compose                                         | ✅     |
-| Infrastructure  | Railway (backend) 🕐, Vercel (frontend) 🕐, Neon (PostgreSQL) ✅ |        |
-| CI/CD           | GitHub Actions (lint, tests, build, deploy)                    | 🕐     |
-| Linter/Formatter| ESLint 🕐, Prettier 🕐, Black ✅, Flake8 ✅                     |        |
+| Layer           | Technology / Tool                                                       | Status |
+| --------------- | ------------------------------------------------------------------------| ------ |
+| Backend         | Django, Django REST Framework, PostgreSQL (Neon)                        | ✅     |
+| Authentication  | Auth0                                                                   | ✅     |
+| Frontend        | React ✅, Bundler 🕐, Tailwind CSS ✅, Zustand ✅, React Query ✅      | ✅     |
+| Animations      | Framer Motion                                                           | ✅     |
+| Testing         | Pytest (backend), Jest + React Testing Library (frontend)               | ✅     |
+| Containerization| Docker, Docker Compose                                                  | ✅     |
+| Infrastructure  | Render (backend) , Vercel (frontend) ✅, Neon (PostgreSQL) ✅           | ✅    |
+| CI/CD           | GitHub Actions (lint, tests, build, deploy)                             | 🕐     |
+| Linter/Formatter| ESLint 🕐, Prettier 🕐, Black ✅, Flake8 ✅                             |        |
 | Optionals       | WebSockets (Django Channels) 🕐, Celery + Redis 🕐, Graphene GraphQL 🕐 |        |
 
 ---
@@ -47,6 +47,7 @@ Create an e-commerce platform for a pizza store with:
     *   Product CRUD: name, description, price, categories, image ✅
     *   Search and filters by name, category, or price 🕐
     *   Pagination and sorting in the backend ✅
+    *   Caching handle whit React Query ✅
 
 3.  **Shopping Cart**
     *   Add/remove products with quantity ✅
@@ -184,8 +185,8 @@ pizza-store-project/
 
 *   **Docker Compose**: defines `web` (Django), `db` (remote Neon), `frontend` services ✅
 *   **Environment Variables**: Auth0 ✅, Neon DB URL ✅, Stripe secret 🕐, JWT secrets ✅
-*   **Railway**: automatic backend deployment from GitHub 🕐
-*   **Vercel**: automatic frontend deployment from repository 🕐
+*   **Render**: automatic backend deployment from GitHub 
+*   **Vercel**: automatic frontend deployment from repository 
 *   **Neon**: serverless PostgreSQL cluster ✅
 
 ---
@@ -195,8 +196,8 @@ pizza-store-project/
 *   **Linting**: Run ESLint and Flake8 🕐
 *   **Format**: Prettier and Black 🕐
 *   **Tests**: Pytest and Jest 🕐
-*   **Build**: Build and publish Docker images 🕐
-*   **Deploy**: Push to Railway (backend) and Vercel (frontend) after merge to `main` 🕐
+*   **Build**: Build and publish Docker images ✅
+*   **Deploy**: Push to Render (backend) and Vercel (frontend) after merge to `main` ✅
 
 ---
 
@@ -301,7 +302,7 @@ For a modern and consistent experience in React, you can use Google Fonts or a s
 
 1.  **Fixed Header**: Logo on the left, links to `Home`, `Menu`, `My Cart`, and `Profile`. Show item count in cart. ✅
 2.  **Hero/Home**: Large pizza image with "Order Now" CTA. Welcome text and prominent button. ✅
-3.  **Menu Page**: Responsive grid (2 columns on mobile, 4 on desktop) of product cards with hover animations (Framer Motion). Each card shows image, name, price, and "Add to Cart" button. 🕐
+3.  **Menu Page**: Responsive grid (1 column on mobile, 4 on desktop) of product cards with hover animations (Framer Motion). Each card shows image, name, price, and "Add to Cart" button. ✅
 4.  **Cart**: Slide-in panel from the right. List of items with small animations when adding/removing. Fixed "Checkout" button at the bottom. ✅
 5.  **Checkout**: Address and payment method form in two steps. Progress bar at the top. ✅
 6.  **Profile/Order History**: List of orders with status in a colored tag. Button to view details. ✅
@@ -355,3 +356,12 @@ To enrich your UI with consistent and lightweight iconography, you can use:
     *   Usage: `import { IconName } from '@/components/ui/icons'`
 
 **Recommendation:** Choose a primary one (e.g., Heroicons if using Tailwind) and complement with lucide-react for more specific icons. Maintain the same stroke style and thickness throughout the app.
+
+### 9. Data Fetching and Caching
+
+* All API calls (e.g. products, orders) are handled using **React Query** to enable:
+  - Automatic caching
+  - Background refetching
+  - Error and loading state management
+  - Stale time control and manual invalidation
+

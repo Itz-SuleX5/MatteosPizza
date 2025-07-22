@@ -1,17 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function usePizza() {
     const { getAccessTokenSilently } = useAuth0();
-    
-    const [pizza, setPizza] = useState([{
-        name: '',
-        description: '',
-        price: '',
-        image_url: 'https://placehold.co/600x400'
-    }])
-    
-    useEffect(() => {
+
         const fetchPizza = async () => {
             const token = await getAccessTokenSilently();
             
@@ -39,13 +31,29 @@ function usePizza() {
             //console.log({token})
             //console.log({data})
             
-            setPizza(parsedProducts);
-        }
-        
-        fetchPizza();
-    }, [getAccessTokenSilently]);
+            return parsedProducts;
+        };
+
+        const {
+            data: pizzas = [{
+                name: '',
+                description: '',
+                price: '',
+                imagen_url: 'https://placehold.co/600x400',
+            }],
+            isLoading, 
+            error,
+            refetch
+        } = useQuery({
+            queryKey: ['pizzas'],
+            queryFn: fetchPizza,
+            staleTime: 5 * 60 * 1000,
+            cacheTime: 10 * 60 * 1000,
+        });
     
-    return {pizzas: pizza}
-}
+        return {pizzas, isLoading, error, refetch}
+
+    }
+
 
 export default usePizza;

@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/organisms/Loading";
 import NavBar from "./components/organisms/NavBar";
@@ -17,6 +19,15 @@ initFontAwesome();
 const App = () => {
   const { isLoading, error, isAuthenticated, loginWithRedirect } = useAuth0();
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 5 * 60 * 1000, 
+        cacheTime: 10 * 60 * 1000
+      },
+    },
+  });
+
   useEffect(() => {
     if (!isLoading && !isAuthenticated){
       loginWithRedirect();
@@ -27,6 +38,7 @@ const App = () => {
   if (isLoading) return <Loading />;  
 
   return (
+    <QueryClientProvider client={queryClient}>
     <Router>
       <div id="app" className="flex flex-col min-h-screen">
         <NavBar />
@@ -42,6 +54,8 @@ const App = () => {
         <Footer />
       </div>
     </Router>
+    <ReactQueryDevtools initialIsOpen={false}/>
+    </QueryClientProvider>
   );
 };
 
