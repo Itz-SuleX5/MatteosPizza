@@ -38,7 +38,7 @@ const Card = ({ id, image, name, description, ingredients, price, onAdd, ...rest
         <div className="px-4">
             <h2 className="text-lg font-semibold mb-2">{name}</h2>
             <p className="text-gray-600 mb-2">{description} {shouldAddBreak && <><br />&nbsp;</>}</p>
-            <p>{ingredients}</p>
+            <p>{ingredients?.join(", ")}</p>
         </div>
         <div className="px-4 py-4 flex items-center justify-between">
             <span className="tex-lg font-bold">${price}</span>

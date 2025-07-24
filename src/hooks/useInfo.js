@@ -33,6 +33,7 @@ export const useInfo = () => {
       const data = await response.json();
       //console.log(data)
       console.log(token)
+      console.log(`OrderSub: ${user.sub}`)
       
       setUserProfile({
         direccion: data.direccion || '',

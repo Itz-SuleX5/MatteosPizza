@@ -8,6 +8,8 @@ import Footer from "./components/organisms/Footer";
 import Profile from "./components/organisms/Profile";
 import Cart from "./components/organisms/Cart";
 import Checkout from "./components/organisms/Checkout";
+import CheckoutSuccess from "./components/organisms/CheckoutSuccess";
+import CheckoutCancel from "./components/organisms/CheckoutCancel";
 import Admin from "./components/organisms/Admin";
 import ProtectedRoute from "./components/organisms/ProtectedRoute";
 import Home from "./views/Home";
@@ -48,6 +50,8 @@ const App = () => {
             <Route path="/perfil" element={<Profile/>}/>
             <Route path="/carrito" element={<Cart/>}/>
             <Route path="/pago" element={<Checkout/>}/>
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route path="/checkout/cancel" element={<CheckoutCancel />} />
             <Route path="/admin" element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
           </Routes>
         </main>
